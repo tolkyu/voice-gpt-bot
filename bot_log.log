@@ -1,0 +1,29 @@
+[2025-07-11 12:46:30] Бот успішно запущено
+[2025-07-11 12:46:41] Підключено до голосового каналу
+[2025-07-11 12:48:28] Підключено до голосового каналу
+[2025-07-11 12:48:39] Аудіо записано у recorded.wav
+[2025-07-11 12:48:39] Розпізнано текст: так то
+[2025-07-11 12:48:52] Аудіо записано у recorded.wav
+[2025-07-11 12:48:53] Розпізнано текст: скільки людей в
+[2025-07-11 12:49:04] Аудіо записано у recorded.wav
+[2025-07-11 12:49:05] Розпізнано текст: скільки людей в світі
+[2025-07-11 13:05:02] Бот успішно запущено
+[2025-07-11 13:05:14] Аудіо записано у recorded.wav
+[2025-07-11 13:05:15] Розпізнано текст: скільки макак у світі є
+[2025-07-11 13:07:52] Бот успішно запущено
+[2025-07-11 13:07:58] Підключено до голосового каналу
+[2025-07-11 13:08:07] Аудіо записано у recorded.wav
+[2025-07-11 13:08:08] Розпізнано текст: Скажи будь ласка скільки макак існує у
+[2025-07-11 13:13:08] Бот успішно запущено
+[2025-07-11 13:13:18] Підключено до голосового каналу
+[2025-07-11 13:13:26] Аудіо записано у recorded.wav
+[2025-07-11 13:13:27] Розпізнано текст: сама популярна пісня у світі
+[2025-07-11 13:13:30] Помилка OpenAI API: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[2025-07-14 17:11:22] Бот успішно запущено
+[2025-07-14 17:11:35] Підключено до голосового каналу
+[2025-07-14 17:11:43] Аудіо записано у recorded.wav
+[2025-07-14 17:11:43] Розпізнано текст: який радіус планети
+[2025-07-14 17:11:49] Помилка OpenAI API: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[2025-07-14 17:13:39] Аудіо записано у recorded.wav
+[2025-07-14 17:13:40] Розпізнано текст: чому в мене вичерпаний ліміт використання
+[2025-07-14 17:13:43] Помилка OpenAI API: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
