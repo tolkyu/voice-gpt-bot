@@ -4,9 +4,9 @@ import speech_recognition as sr
 import datetime
 
 
-# Токени (став свої)
-DISCORD_TOKEN = 'MTM5MzEyNzM1NDEyMDc5ODQxOA.GDzF3L.Z060TXIRI5AkmWYg5lzhER7ZzprNavePcb41Lo'
-OPENAI_API_KEY = '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'
+
+DISCORD_TOKEN = 'YOUR TOKEN'
+OPENAI_API_KEY = 'YOUR TOKEN'
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -14,21 +14,17 @@ intents.voice_states = True
 
 client = discord.Client(intents=intents)
 
-# Ініціалізація OpenAI клієнта з API ключем
 client_openai = OpenAI(api_key=OPENAI_API_KEY)
 
-# Функція для збереження аудіо у WAV
 def save_audio(audio, filename="recorded.wav"):
     with open(filename, "wb") as f:
         f.write(audio.get_wav_data())
 
-# Функція для логування
 def log_event(text):
     with open("bot_log.log", "a", encoding="utf-8") as f:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         f.write(f"[{timestamp}] {text}\n")
-
-# Розпізнавання голосу з мікрофона
+        
 def record_and_transcribe():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -51,7 +47,7 @@ def record_and_transcribe():
         log_event(f"Помилка розпізнавання: {e}")
         return "Не вдалося розпізнати"
 
-# Запит до GPT через новий OpenAI SDK
+
 def ask_gpt(prompt):
     try:
         response = client_openai.chat.completions.create(
@@ -62,7 +58,6 @@ def ask_gpt(prompt):
         log_event(f"GPT відповів: {answer}")
         return answer
     except Exception as e:
-        # Логуй помилку, можна аналізувати текст e для RateLimit
         log_event(f"Помилка OpenAI API: {e}")
         if "RateLimit" in str(e) or "quota" in str(e).lower():
             return "Вибач, ліміт використання AI вичерпано. Спробуй пізніше."
