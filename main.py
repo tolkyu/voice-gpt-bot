@@ -2,6 +2,7 @@ import discord
 from openai import OpenAI
 import speech_recognition as sr
 import datetime
+import asyncio
 
 
 
@@ -25,26 +26,29 @@ def log_event(text):
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         f.write(f"[{timestamp}] {text}\n")
         
-def record_and_transcribe():
+def _write_question(text):
+    with open("questions.txt", "a", encoding="utf-8") as f:
+        f.write(f"{datetime.datetime.now().isoformat()} - {text}\n")
+
+
+async def record_and_transcribe():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("🎙 Слухаю...")
-        audio = r.listen(source)
+        audio = await asyncio.to_thread(r.listen, source)
 
-    save_audio(audio)
-    log_event("Аудіо записано у recorded.wav")
+    await asyncio.to_thread(save_audio, audio)
+    await asyncio.to_thread(log_event, "Аудіо записано у recorded.wav")
 
     try:
-        text = r.recognize_google(audio, language='uk-UA')
+        text = await asyncio.to_thread(r.recognize_google, audio, language='uk-UA')
         print("📄 Розпізнано:", text)
 
-        with open("questions.txt", "a", encoding="utf-8") as f:
-            f.write(f"{datetime.datetime.now().isoformat()} - {text}\n")
-
-        log_event(f"Розпізнано текст: {text}")
+        await asyncio.to_thread(_write_question, text)
+        await asyncio.to_thread(log_event, f"Розпізнано текст: {text}")
         return text
     except Exception as e:
-        log_event(f"Помилка розпізнавання: {e}")
+        await asyncio.to_thread(log_event, f"Помилка розпізнавання: {e}")
         return "Не вдалося розпізнати"
 
 
@@ -88,7 +92,7 @@ async def on_message(message):
 
     if message.content.startswith('!ask'):
         await message.channel.send("🎤 Слухаю твоє питання з мікрофону комп’ютера...")
-        question = record_and_transcribe()
+        question = await record_and_transcribe()
         await message.channel.send(f"🧠 Ти сказав: `{question}`")
 
         answer = ask_gpt(question)
